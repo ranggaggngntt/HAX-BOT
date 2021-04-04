@@ -1,0 +1,5 @@
+ProxyGrab==0.2.5
+Proxy-List-Scrapper==0.2.1
+colorama==0.4.4
+requests==2.25.1
+tld==0.12.5
