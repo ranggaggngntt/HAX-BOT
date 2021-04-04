@@ -10,6 +10,11 @@ def main():
     for i in temp:
         if i == '':
             pass
+        elif i.endswith('/'):
+            i = i[:-1]
+            save = open('result.txt', 'a')
+            save.write(i+'\n')
+            save.close()
         else:
             save = open('result.txt', 'a')
             save.write(i+'\n')

