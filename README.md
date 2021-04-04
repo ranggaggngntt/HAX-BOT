@@ -1,7 +1,7 @@
 # HAX-BOT
 
-This Tools Using Python3
-Feature this tools:
+This Tools Using Python3.\
+Features:
 - Reverse IP (Auto Grabbing Proxy)
 - Site Scanner (Wordpress and Laravel)
 - Laravel Exploit
