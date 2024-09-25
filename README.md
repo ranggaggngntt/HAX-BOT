@@ -1,37 +1,61 @@
-# HAX-BOT
+# HAX-BOT (Archived)
 
-This Tools Using Python3.\
-Features:
-- Reverse IP (Auto Grabbing Proxy)
-- Site Scanner (Wordpress and Laravel)
-- Laravel Exploit
-- Bing Dorker
-- Remove Duplicate
-- Remove Subdomain
-- Convert Domain to IP
+This repository has been archived and is no longer actively maintained. You are welcome to explore, use, or learn from the code, but please note that updates and support are no longer provided.
 
+---
 
-<img src='picture.png'>
+## Overview
 
-# How to Usage
+HAX-BOT is a set of tools built with Python3, designed to automate various tasks related to penetration testing and reconnaissance. The following features are included:
 
-clone my project
+- **Reverse IP Lookup** (Auto Grabbing Proxy)
+- **Website Scanner** (Support for Wordpress and Laravel)
+- **Laravel Exploit**
+- **Bing Dorker**
+- **Remove Duplicates** (from lists)
+- **Remove Subdomains**
+- **Convert Domains to IP Addresses**
 
-      git clone https://github.com/ranggaggngntt/HAX-BOT.git
-      
-entering directories
+---
 
-      cd HAX-BOT
-      
-installing module requirements
+## Screenshot
 
-      python3 -m pip install requirements.txt
+<img src='picture.png' alt="Screenshot of HAX-BOT">
 
-running program
+---
 
-      python3 haxbot.py
-      
+## How to Use
 
-If u want donate me : https://saweria.co/ranggaggngntt
+Clone the repository:
 
-u can use or learn using my code ❤️
+```bash
+git clone https://github.com/ranggaggngntt/HAX-BOT.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd HAX-BOT
+```
+
+Install the required modules:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+Run the program:
+
+```bash
+python3 haxbot.py
+```
+
+---
+
+## Donations
+
+If you'd like to support my work, feel free to donate via [Saweria](https://saweria.co/ranggaggngntt). Thank you for your support! ❤️
+
+---
+
+This archive remains available for anyone interested in learning or experimenting with the code.
